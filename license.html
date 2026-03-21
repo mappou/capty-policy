@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ライセンス情報 - Capty Policy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ライセンス情報</h1>
+      <p class="subtitle">Licenses</p>
+    </header>
+
+    <div class="content">
+      <a href="index.html" class="back-link">トップページに戻る</a>
+
+      <h2>使用素材のライセンス一覧</h2>
+      <p class="small-note">
+        このページは、アプリで利用している画像のライセンス情報（`capty_resouce/artists_json_data/license_info.json`）を読み込み、
+        ライセンス種別ごとの件数と、詳細（`artist_id` / `local_file` / `title` / `artist` / `license`）を表示します。
+      </p>
+
+      <div id="licenseCounts" class="license-pills" aria-live="polite"></div>
+
+      <div class="filter-row">
+        <input id="searchInput" type="search" placeholder="検索（artist_id / local_file / artist / title）" />
+        <select id="licenseFilter" aria-label="ライセンスで絞り込み"></select>
+        <select id="pageSize" aria-label="表示件数">
+          <option value="25">25件</option>
+          <option value="50" selected>50件</option>
+          <option value="100">100件</option>
+        </select>
+      </div>
+
+      <p id="resultMeta" class="small-note"></p>
+
+      <div class="table-wrap">
+        <table class="license-table">
+          <thead>
+            <tr>
+              <th style="width: 140px;">artist_id</th>
+              <th style="width: 160px;">local_file</th>
+              <th>title</th>
+              <th style="width: 180px;">artist</th>
+              <th style="width: 220px;">license</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+
+      <p id="loadError" class="small-note" style="display:none; color:#b00020;"></p>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Capty. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    const jsonPath = "capty_resouce/artists_json_data/license_info.json";
+
+    let allItems = [];
+    let uniqueLicenses = [];
+
+    function normalizeText(value) {
+      return String(value ?? "").replace(/\s+/g, " ").trim();
+    }
+
+    function truncate(value, maxLen) {
+      const s = normalizeText(value);
+      if (s.length <= maxLen) return s;
+      return s.slice(0, maxLen) + "…";
+    }
+
+    function getSelectedLicense() {
+      const el = document.getElementById("licenseFilter");
+      return el.value;
+    }
+
+    function applyFilterAndRender() {
+      const q = normalizeText(document.getElementById("searchInput").value).toLowerCase();
+      const license = getSelectedLicense();
+      const pageSize = Number(document.getElementById("pageSize").value);
+
+      const filtered = allItems.filter((it) => {
+        const matchLicense = license === "all" ? true : it.license === license;
+        if (!matchLicense) return false;
+
+        if (!q) return true;
+        const haystack = [
+          it.artist_id,
+          it.local_file,
+          it.title,
+          it.artist,
+          it.license,
+        ].map((x) => normalizeText(x).toLowerCase()).join(" ");
+
+        return haystack.includes(q);
+      });
+
+      const shown = filtered.slice(0, pageSize);
+
+      const rows = document.getElementById("rows");
+      rows.innerHTML = "";
+
+      for (const it of shown) {
+        const tr = document.createElement("tr");
+
+        const tdArtistId = document.createElement("td");
+        tdArtistId.textContent = normalizeText(it.artist_id);
+        tr.appendChild(tdArtistId);
+
+        const tdLocalFile = document.createElement("td");
+        tdLocalFile.textContent = normalizeText(it.local_file);
+        tr.appendChild(tdLocalFile);
+
+        const tdTitle = document.createElement("td");
+        tdTitle.textContent = truncate(it.title, 70);
+        tr.appendChild(tdTitle);
+
+        const tdArtist = document.createElement("td");
+        tdArtist.textContent = normalizeText(it.artist);
+        tr.appendChild(tdArtist);
+
+        const tdLicense = document.createElement("td");
+        tdLicense.textContent = normalizeText(it.license);
+        tr.appendChild(tdLicense);
+
+        rows.appendChild(tr);
+      }
+
+      const meta = document.getElementById("resultMeta");
+      meta.textContent = `表示中: ${shown.length}件（該当: ${filtered.length}件）`;
+    }
+
+    function renderLicenseCounts(items) {
+      const counts = items.reduce((acc, it) => {
+        const key = normalizeText(it.license) || "Unknown";
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+
+      const countsEl = document.getElementById("licenseCounts");
+      countsEl.innerHTML = "";
+
+      uniqueLicenses = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+      for (const lic of uniqueLicenses) {
+        const pill = document.createElement("div");
+        pill.className = "license-pill";
+        pill.innerHTML = `<span>${lic}</span>：${counts[lic]}件`;
+        countsEl.appendChild(pill);
+      }
+
+      const licenseFilter = document.getElementById("licenseFilter");
+      licenseFilter.innerHTML = "";
+
+      const allOpt = document.createElement("option");
+      allOpt.value = "all";
+      allOpt.textContent = "すべて";
+      licenseFilter.appendChild(allOpt);
+
+      for (const lic of uniqueLicenses) {
+        const opt = document.createElement("option");
+        opt.value = lic;
+        opt.textContent = lic;
+        licenseFilter.appendChild(opt);
+      }
+    }
+
+    async function loadJsonAndInit() {
+      const loadError = document.getElementById("loadError");
+      try {
+        const res = await fetch(jsonPath, { cache: "no-store" });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        allItems = await res.json();
+
+        renderLicenseCounts(allItems);
+        applyFilterAndRender();
+
+        document.getElementById("searchInput").addEventListener("input", applyFilterAndRender);
+        document.getElementById("licenseFilter").addEventListener("change", applyFilterAndRender);
+        document.getElementById("pageSize").addEventListener("change", applyFilterAndRender);
+      } catch (e) {
+        loadError.style.display = "block";
+        loadError.textContent = `読み込みに失敗しました: ${e?.message ?? String(e)}`;
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadJsonAndInit);
+  </script>
+</body>
+</html>
+
