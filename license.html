@@ -150,7 +150,10 @@
       for (const lic of uniqueLicenses) {
         const pill = document.createElement("div");
         pill.className = "license-pill";
-        pill.innerHTML = `<span>${lic}</span>：${counts[lic]}件`;
+        const span = document.createElement("span");
+        span.textContent = lic;
+        pill.appendChild(span);
+        pill.appendChild(document.createTextNode(`：${counts[lic]}件`));
         countsEl.appendChild(pill);
       }
 
