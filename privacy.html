@@ -16,90 +16,123 @@
     <div class="content">
       <a href="index.html" class="back-link">トップページに戻る</a>
 
-      <p>本プライバシーポリシーは、Masanori Uesugi（以下「当社」といいます）が提供するモバイルアプリケーション「Capty」（以下「本アプリ」といいます）における、ユーザーの皆様の情報の取り扱いについて定めるものです。本アプリは、カメラで美術作品をスキャンし、AI技術を活用してアーティストや作品に関する解説ストーリーを生成するサービスです。</p>
+      <div class="lang-switch">
+        <button id="langToggle" type="button" aria-label="Switch language">English</button>
+      </div>
 
-      <h2>1. 収集する情報</h2>
-      <p>本アプリでは、以下の情報を収集・利用します。</p>
+      <div id="jaContent" class="lang-content is-active">
+        <p>本プライバシーポリシーは、Masanori Uesugi（以下「当社」といいます）が提供するモバイルアプリケーション「Capty」（以下「本アプリ」といいます）における、ユーザーの皆様の情報の取り扱いについて定めるものです。本アプリは、カメラで美術作品をスキャンし、AI技術を活用してアーティストや作品に関する解説ストーリーを生成するサービスです。</p>
 
-      <h3>（1）カメラで撮影した画像</h3>
-      <p>美術作品のスキャン時に、カメラで撮影した画像を取得します。撮影した画像は、作品名・アーティスト名の認識（OCR）およびAIによる解説生成のために使用されます。画像はサーバー上に永続的に保存されることはなく、解析処理の完了後に破棄されます。</p>
+        <h2>1. 収集する情報</h2>
+        <p>本アプリでは、以下の情報を収集・利用します。</p>
 
-      <h3>（2）利用状況データ</h3>
-      <p>サービスの改善を目的として、Firebase Analyticsを通じて以下の利用状況データを自動的に収集します。</p>
-      <ul>
-        <li>画面の閲覧履歴</li>
-        <li>スキャンの実行回数・成功/失敗の情報</li>
-        <li>ストーリー生成の利用状況</li>
-        <li>デバイスの種類、OSバージョン</li>
-        <li>アプリの利用時間</li>
-      </ul>
-      <p>収集した利用状況データは、本アプリの品質向上、新機能の企画・開発、および本アプリに関する重要なお知らせの配信等に利用される場合があります。</p>
+        <h3>（1）カメラで撮影した画像</h3>
+        <p>美術作品のスキャン時に、カメラで撮影した画像を取得します。撮影した画像は、作品名・アーティスト名の認識（OCR）およびAIによる解説生成のために使用されます。画像はサーバー上に永続的に保存されることはなく、解析処理の完了後に破棄されます。</p>
 
-      <h3>（3）匿名ユーザーID</h3>
-      <p>本アプリでは、ユーザーを識別するためのIDを生成・利用します（現在は匿名IDを使用しています）。将来的に、機種変更時のデータ引き継ぎ等を目的として、ユーザーの任意の操作によりメールアドレス等を用いたアカウント連携機能を提供する場合があります。その際、入力された情報はアカウント管理の目的のみに使用します。</p>
+        <h3>（2）利用状況データ</h3>
+        <p>サービスの改善を目的として、Firebase Analyticsを通じて以下の利用状況データを自動的に収集します。</p>
+        <ul>
+          <li>画面の閲覧履歴</li>
+          <li>スキャンの実行回数・成功/失敗の情報</li>
+          <li>ストーリー生成の利用状況</li>
+          <li>デバイスの種類、OSバージョン</li>
+          <li>アプリの利用時間</li>
+        </ul>
 
-      <h3>（4）購入情報</h3>
-      <p>サブスクリプション（有料プラン）をご利用の場合、RevenueCatを通じて購入状態の管理を行います。クレジットカード番号等の決済情報は、Apple（App Store）が管理しており、当社が直接取得することはありません。</p>
+        <h3>（3）匿名ユーザーID</h3>
+        <p>本アプリでは、ユーザーを識別するためのIDを生成・利用します（現在は匿名IDを使用しています）。将来的に、機種変更時のデータ引き継ぎ等を目的として、ユーザーの任意の操作によりメールアドレス等を用いたアカウント連携機能を提供する場合があります。その際、入力された情報はアカウント管理の目的のみに使用します。</p>
 
-      <h3>（5）収集しない情報</h3>
-      <p>本アプリは、位置情報、連絡先、写真ライブラリへのアクセスなど、スキャン機能に直接関係しない情報は収集しません。</p>
+        <h3>（4）購入情報</h3>
+        <p>サブスクリプション（有料プラン）をご利用の場合、RevenueCatを通じて購入状態の管理を行います。クレジットカード番号等の決済情報は、Apple（App Store）が管理しており、当社が直接取得することはありません。</p>
 
-      <h2>2. AI技術の利用について</h2>
-      <p>本アプリは、AIを利用して、撮影された美術作品の画像からアーティスト情報の特定および作品の解説ストーリーの生成を行います。</p>
-      <ul>
-        <li>撮影された画像は、Firebase（Google LLC提供の各種バックエンド・分析サービス）に送信され、解析が行われます。</li>
-        <li>AIによる解析は作品の認識・解説生成のみを目的としており、ユーザーの個人情報の推定や行動分析には使用されません。</li>
-        <li>送信された画像は、解析処理の完了後にAIサービス側で保持されることはありません。</li>
-      </ul>
+        <h3>（5）収集しない情報</h3>
+        <p>本アプリは、位置情報、連絡先、写真ライブラリへのアクセスなど、スキャン機能に直接関係しない情報は収集しません。</p>
 
-      <h2>3. 利用する第三者サービス</h2>
-      <p>本アプリでは、以下の第三者サービスを利用しています。各サービスは独自のプライバシーポリシーに基づいてデータを取り扱います。</p>
-      <ul>
-        <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase（Analytics、Authentication、Cloud Firestore、Cloud Functions）</a> - Google LLC提供</li>
-        <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a> - サブスクリプション管理</li>
-        <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">Google Gemini AI</a> - 画像解析・ストーリー生成</li>
-      </ul>
+        <h2>2. AI技術の利用について</h2>
+        <p>本アプリは、AIを利用して、撮影された美術作品の画像からアーティスト情報の特定および作品の解説ストーリーの生成を行います。</p>
 
-      <h2>4. データの保存と同期</h2>
-      <p>スキャンした美術作品の履歴（アーティスト名、作品名、生成されたストーリー等）は、以下の方法で保存されます。</p>
-      <ul>
-        <li><strong>ローカル保存：</strong>お使いのデバイス内に保存されます。</li>
-        <li><strong>クラウド同期：</strong>Firebase Cloud Firestoreを通じて、匿名ユーザーIDに紐づけてクラウドに同期されます。これにより、アプリの再インストール時にも履歴を復元できます。</li>
-      </ul>
+        <h2>3. 利用する第三者サービス</h2>
+        <ul>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase（Analytics、Authentication、Cloud Firestore、Cloud Functions）</a></li>
+          <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">Google Gemini AI</a></li>
+        </ul>
 
-      <h2>5. 情報の開示</h2>
-      <p>当社は、以下の場合を除き、収集した情報を第三者に開示することはありません。</p>
-      <ul>
-        <li>法令に基づく開示が求められた場合</li>
-        <li>ユーザーまたは第三者の権利・安全の保護のために必要と判断した場合</li>
-        <li>本プライバシーポリシーに記載された第三者サービスプロバイダーとの共有（サービス提供のために必要な範囲に限る）</li>
-      </ul>
+        <h2>4. データの保持と削除</h2>
+        <p>ユーザーデータは、本アプリをご利用いただいている期間中およびサービス運営上合理的に必要な期間保持されます。データの削除を希望される場合は、submappou@gmail.com までご連絡ください。</p>
 
-      <h2>6. オプトアウト</h2>
-      <p>本アプリをアンインストールすることで、以降の情報収集を停止できます。クラウドに同期されたデータの削除を希望される場合は、下記のお問い合わせ先までご連絡ください。</p>
+        <h2>5. お問い合わせ</h2>
+        <p>本アプリのプライバシーに関するご質問やお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
+        <p>メール：<a href="mailto:submappou@gmail.com">submappou@gmail.com</a></p>
+      </div>
 
-      <h2>7. データの保持と削除</h2>
-      <p>ユーザーデータは、本アプリをご利用いただいている期間中およびサービス運営上合理的に必要な期間保持されます。データの削除を希望される場合は、submappou@gmail.com までご連絡ください。合理的な期間内に対応いたします。</p>
+      <div id="enContent" class="lang-content">
+        <p>This Privacy Policy describes how Masanori Uesugi ("we", "our", or "us") handles user information in the Capty mobile application ("the App"). The App scans artworks with a camera and uses AI technology to generate explanatory stories about artists and artworks.</p>
 
-      <h2>8. 児童のプライバシー</h2>
-      <p>本アプリは13歳未満のお子様を対象としておらず、13歳未満のお子様から意図的に個人情報を収集することはありません。13歳未満のお子様が情報を提供した事実が判明した場合、速やかに当該情報を削除いたします。保護者の方でお気づきの点がございましたら、submappou@gmail.com までご連絡ください。</p>
+        <h2>1. Information We Collect</h2>
+        <p>The App collects and uses the following information:</p>
 
-      <h2>9. セキュリティ</h2>
-      <p>当社は、収集した情報の機密性を保護するために、適切な物理的、電子的、および手続き上の安全対策を講じています。ただし、インターネットを通じたデータ送信や電子的な保存方法において、100%の安全性を保証することはできません。</p>
+        <h3>(1) Camera Images</h3>
+        <p>When users scan artworks, the App captures camera images. These images are used for OCR-based recognition of artwork and artist names and for AI-generated commentary. Images are not permanently stored on our servers and are discarded after processing is complete.</p>
 
-      <h2>10. プライバシーポリシーの変更</h2>
-      <p>本プライバシーポリシーは、必要に応じて随時更新される場合があります。変更があった場合は、本ページを更新することによりお知らせします。定期的にご確認いただくことをお勧めします。継続してご利用いただくことにより、変更後のプライバシーポリシーに同意したものとみなされます。</p>
+        <h3>(2) Usage Data</h3>
+        <p>To improve service quality, the App automatically collects usage data via Firebase Analytics, including:</p>
+        <ul>
+          <li>Screen view history</li>
+          <li>Number of scan attempts and success/failure status</li>
+          <li>Story generation usage status</li>
+          <li>Device type and OS version</li>
+          <li>App usage duration</li>
+        </ul>
 
-      <p>本プライバシーポリシーは2026年3月21日より有効です。</p>
+        <h3>(3) Anonymous User ID</h3>
+        <p>The App generates and uses an identifier to distinguish users (currently an anonymous ID). In the future, we may provide optional account-linking features (for example, by email) to support data migration across devices. Any such information will only be used for account management.</p>
 
-      <h2>11. お問い合わせ</h2>
-      <p>本アプリのプライバシーに関するご質問やお問い合わせは、以下のメールアドレスまでご連絡ください。</p>
-      <p>メール：<a href="mailto:submappou@gmail.com">submappou@gmail.com</a></p>
+        <h3>(4) Purchase Information</h3>
+        <p>If you subscribe to paid plans, subscription status is managed through RevenueCat. Payment information such as credit card details is handled by Apple (App Store) and is not directly collected by us.</p>
+
+        <h3>(5) Information We Do Not Collect</h3>
+        <p>The App does not collect information unrelated to the core scan feature, such as precise location data, contacts, or photo-library data.</p>
+
+        <h2>2. Use of AI Technology</h2>
+        <p>The App uses AI to identify artist information from captured artwork images and to generate explanatory stories about artworks.</p>
+
+        <h2>3. Third-Party Services</h2>
+        <p>The App uses the following third-party services. Each service handles data according to its own privacy policy.</p>
+        <ul>
+          <li><a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener noreferrer">Firebase (Analytics, Authentication, Cloud Firestore, Cloud Functions)</a></li>
+          <li><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener noreferrer">RevenueCat</a></li>
+          <li><a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">Google Gemini AI</a></li>
+        </ul>
+
+        <h2>4. Data Retention and Deletion</h2>
+        <p>User data is retained while you use the App and for a reasonable period required for service operation. If you wish to request deletion of your data, please contact us at submappou@gmail.com. We will respond within a reasonable period.</p>
+
+        <h2>5. Contact</h2>
+        <p>If you have questions or requests regarding privacy in the App, please contact us at:</p>
+        <p>Email: <a href="mailto:submappou@gmail.com">submappou@gmail.com</a></p>
+      </div>
     </div>
 
     <footer>
       <p>&copy; 2026 Capty. All rights reserved.</p>
     </footer>
   </div>
+
+  <script>
+    (function () {
+      const button = document.getElementById("langToggle");
+      const ja = document.getElementById("jaContent");
+      const en = document.getElementById("enContent");
+      let isJapanese = true;
+
+      button.addEventListener("click", function () {
+        isJapanese = !isJapanese;
+        ja.classList.toggle("is-active", isJapanese);
+        en.classList.toggle("is-active", !isJapanese);
+        button.textContent = isJapanese ? "English" : "日本語";
+      });
+    })();
+  </script>
 </body>
 </html>

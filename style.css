@@ -129,6 +129,34 @@ h1 {
   margin-right: 5px;
 }
 
+.lang-switch {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.lang-switch button {
+  border: 1px solid #dfe6e9;
+  background: #fff;
+  color: #2c3e50;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.lang-switch button:hover {
+  background: #f7f9fb;
+}
+
+.lang-content {
+  display: none;
+}
+
+.lang-content.is-active {
+  display: block;
+}
+
 footer {
   text-align: center;
   margin-top: 60px;
