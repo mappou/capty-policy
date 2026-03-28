@@ -17,10 +17,10 @@
       <a href="index.html" class="back-link">トップページに戻る</a>
 
       <div class="lang-switch">
-        <button id="langToggle" type="button" aria-label="Switch language">English</button>
+        <button id="langToggle" type="button" aria-label="Switch language">日本語</button>
       </div>
 
-      <div id="jaContent" class="lang-content is-active">
+      <div id="jaContent" class="lang-content">
         <p>本プライバシーポリシーは、Masanori Uesugi（以下「当社」といいます）が提供するモバイルアプリケーション「Capty」（以下「本アプリ」といいます）における、ユーザーの皆様の情報の取り扱いについて定めるものです。本アプリは、カメラで美術作品をスキャンし、AI技術を活用してアーティストや作品に関する解説ストーリーを生成するサービスです。</p>
 
         <h2>1. 収集する情報</h2>
@@ -66,7 +66,7 @@
         <p>メール：<a href="mailto:submappou@gmail.com">submappou@gmail.com</a></p>
       </div>
 
-      <div id="enContent" class="lang-content">
+      <div id="enContent" class="lang-content is-active">
         <p>This Privacy Policy describes how Masanori Uesugi ("we", "our", or "us") handles user information in the Capty mobile application ("the App"). The App scans artworks with a camera and uses AI technology to generate explanatory stories about artists and artworks.</p>
 
         <h2>1. Information We Collect</h2>
@@ -124,7 +124,7 @@
       const button = document.getElementById("langToggle");
       const ja = document.getElementById("jaContent");
       const en = document.getElementById("enContent");
-      let isJapanese = true;
+      let isJapanese = false;
 
       button.addEventListener("click", function () {
         isJapanese = !isJapanese;
